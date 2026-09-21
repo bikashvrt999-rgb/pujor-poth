@@ -3,1208 +3,717 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Pujor Poth</title>
 
 <style>
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#08050d;
-    color:white;
-    overflow-x:hidden;
+  font-family:Arial,sans-serif;
+  background:#08060d;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-/* ================= HOME ================= */
+/* HOME */
 
 #home{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-
-    background:
-    radial-gradient(circle at center,
-    #7b1827 0%,
-    #310d18 30%,
-    #120812 65%,
-    #08050d 100%);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 35%,#751525,#300b18 35%,#08060d 75%);
 }
 
-.home-content{
-    position:relative;
-    z-index:5;
-    padding:25px;
+.homeBox{
+  position:relative;
+  z-index:2;
 }
 
 .lamp{
-    font-size:70px;
-    animation:lampGlow 2s infinite alternate;
+  font-size:75px;
+  animation:lamp 2s infinite alternate;
 }
 
-@keyframes lampGlow{
-    from{
-        filter:drop-shadow(0 0 5px #ff9d00);
-        transform:scale(.95);
-    }
-    to{
-        filter:drop-shadow(0 0 35px #ff6a00);
-        transform:scale(1.05);
-    }
+@keyframes lamp{
+  from{filter:drop-shadow(0 0 5px orange)}
+  to{filter:drop-shadow(0 0 35px orange)}
 }
 
 .logo{
-    margin-top:15px;
-    font-size:clamp(42px,12vw,75px);
-    font-weight:900;
-    letter-spacing:4px;
-
-    color:#ffd76a;
-
-    text-shadow:
-    0 0 8px #ffb000,
-    0 0 25px #ff5a00,
-    0 0 50px #ff2600;
-
-    animation:titleAppear 1.5s ease;
-}
-
-@keyframes titleAppear{
-
-    from{
-        opacity:0;
-        transform:translateY(50px) scale(.7);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
+  margin-top:12px;
+  font-size:clamp(42px,12vw,78px);
+  font-weight:900;
+  letter-spacing:4px;
+  color:#ffd76a;
+  text-shadow:0 0 12px #ff9d00,0 0 35px #ff4500;
 }
 
 .tagline{
-    margin-top:12px;
-    font-size:18px;
-    color:#ffe1e1;
+  margin-top:10px;
+  color:#ffe1e1;
+  font-size:18px;
 }
 
-.enter-btn{
-
-    margin-top:40px;
-
-    padding:16px 32px;
-
-    border:none;
-    border-radius:50px;
-
-    background:linear-gradient(
-        45deg,
-        #ff3d00,
-        #ff9800
-    );
-
-    color:white;
-
-    font-size:16px;
-    font-weight:bold;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 0 15px #ff5c00,
-    0 0 35px #ff3d0040;
-
-    transition:.3s;
+.enter{
+  margin-top:38px;
+  padding:16px 30px;
+  border:0;
+  border-radius:40px;
+  background:linear-gradient(45deg,#e62b16,#ff9d00);
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  box-shadow:0 0 30px #ff5b00;
+  cursor:pointer;
 }
 
-.enter-btn:hover{
-    transform:scale(1.07);
-}
-
-.enter-btn:active{
-    transform:scale(.95);
-}
-
-/* floating lights */
-
-.light{
-    position:absolute;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:#ffd86b;
-
-    box-shadow:
-    0 0 10px #ffd86b,
-    0 0 20px #ff9800;
-
-    animation:float 5s linear infinite;
-}
-
-.light:nth-child(1){
-    left:10%;
-    bottom:-10px;
-    animation-delay:0s;
-}
-
-.light:nth-child(2){
-    left:25%;
-    bottom:-20px;
-    animation-delay:1s;
-}
-
-.light:nth-child(3){
-    left:50%;
-    bottom:-15px;
-    animation-delay:2s;
-}
-
-.light:nth-child(4){
-    left:75%;
-    bottom:-20px;
-    animation-delay:3s;
-}
-
-.light:nth-child(5){
-    left:90%;
-    bottom:-15px;
-    animation-delay:4s;
-}
-
-@keyframes float{
-
-    0%{
-        transform:translateY(0);
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(-100vh);
-        opacity:0;
-    }
-}
-
-
-/* ================= LOADING ================= */
-
-#loading{
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:100;
-
-    align-items:center;
-    justify-content:center;
-
-    flex-direction:column;
-
-    background:#09050d;
-
-    text-align:center;
-}
-
-.loading-icon{
-    font-size:65px;
-
-    animation:spinLamp 1.5s infinite;
-}
-
-@keyframes spinLamp{
-
-    0%{
-        transform:scale(.8) rotate(-10deg);
-    }
-
-    50%{
-        transform:scale(1.1) rotate(10deg);
-    }
-
-    100%{
-        transform:scale(.8) rotate(-10deg);
-    }
-}
-
-.loading-text{
-    margin-top:20px;
-    color:#ffd76a;
-    font-size:18px;
-}
-
-
-/* ================= MAP ================= */
+/* MAP PAGE */
 
 #mapPage{
-
-    display:none;
-
-    min-height:100vh;
-
-    padding:
-    25px
-    15px
-    60px;
-
-    background:
-    radial-gradient(
-        circle at top,
-        #3b1020,
-        #100812 55%,
-        #08050d
-    );
+  display:none;
+  min-height:100vh;
+  padding:25px 14px 60px;
+  background:
+    radial-gradient(circle at top,#351020,#09060e 60%);
 }
 
-.header{
-    text-align:center;
+.title{
+  text-align:center;
 }
 
-.header h1{
-
-    font-size:38px;
-
-    color:#ffd76a;
-
-    text-shadow:
-    0 0 15px #ff7300;
+.title h1{
+  color:#ffd76a;
+  font-size:38px;
+  text-shadow:0 0 15px orange;
 }
 
-.header p{
-
-    margin-top:8px;
-
-    color:#dbc9d1;
+.title p{
+  margin-top:7px;
+  color:#cbbdc5;
 }
 
-
-/* route buttons */
+/* ROUTES */
 
 .routes{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin:
-    25px
-    auto;
-
-    max-width:600px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:24px auto;
 }
 
-.route-btn{
-
-    border:1px solid #ffffff25;
-
-    background:#ffffff0b;
-
-    color:white;
-
-    padding:
-    12px
-    16px;
-
-    border-radius:30px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
+.routeBtn{
+  border:1px solid #ffffff25;
+  background:#ffffff09;
+  color:#fff;
+  padding:12px 15px;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
 }
 
-.route-btn.active{
-    transform:scale(1.05);
+.routeBtn.active{
+  transform:scale(1.05);
 }
 
 .green.active{
-    background:#16a34a;
-    box-shadow:0 0 25px #16a34a;
+  background:#159447;
+  box-shadow:0 0 25px #159447;
 }
 
 .blue.active{
-    background:#2563eb;
-    box-shadow:0 0 25px #2563eb;
+  background:#2563eb;
+  box-shadow:0 0 25px #2563eb;
 }
 
 .red.active{
-    background:#dc2626;
-    box-shadow:0 0 25px #dc2626;
+  background:#dc2626;
+  box-shadow:0 0 25px #dc2626;
 }
 
-
-/* map */
+/* MAP */
 
 .map{
+  position:relative;
+  max-width:700px;
+  height:700px;
+  margin:auto;
+  border-radius:30px;
+  overflow:hidden;
+  border:1px solid #ffffff20;
 
-    position:relative;
+  background:
+    linear-gradient(135deg,#15121e,#251327);
 
-    max-width:650px;
-
-    min-height:620px;
-
-    margin:auto;
-
-    padding:
-    35px
-    20px;
-
-    border-radius:30px;
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #17101f,
-        #281329
-    );
-
-    border:
-    1px solid #ffffff20;
-
-    box-shadow:
-    0 0 40px #000;
+  box-shadow:0 0 45px #000;
 }
 
-.map-title{
+/* map roads */
 
-    text-align:center;
-
-    color:#ffffff70;
-
-    font-size:11px;
-
-    letter-spacing:4px;
-
-    margin-bottom:25px;
+.road{
+  position:absolute;
+  background:#ffffff07;
+  border:1px solid #ffffff0b;
 }
 
-
-/* route */
-
-.route-line{
-
-    position:absolute;
-
-    top:80px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:4px;
-
-    height:510px;
-
-    background:#ffffff12;
-
-    border-radius:10px;
-
-    overflow:hidden;
+.road1{
+  width:130%;
+  height:55px;
+  top:130px;
+  left:-15%;
+  transform:rotate(17deg);
 }
 
-.route-line::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:var(--routeColor);
-
-    box-shadow:
-    0 0 20px var(--routeColor);
-
-    transform:scaleY(0);
-
-    transform-origin:top;
-
-    animation:draw 1.5s forwards;
+.road2{
+  width:130%;
+  height:45px;
+  top:370px;
+  left:-15%;
+  transform:rotate(-14deg);
 }
 
-@keyframes draw{
-
-    to{
-        transform:scaleY(1);
-    }
+.road3{
+  width:60%;
+  height:45px;
+  top:500px;
+  left:20%;
+  transform:rotate(30deg);
 }
 
+/* route SVG */
 
-/* stops */
-
-.stops{
-
-    position:relative;
-
-    z-index:3;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:12px;
+svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
 }
 
-.stop{
-
-    width:100%;
-
-    max-width:285px;
-
-    padding:
-    13px
-    16px;
-
-    border-radius:16px;
-
-    border:
-    1px solid #ffffff20;
-
-    background:#ffffff0b;
-
-    backdrop-filter:blur(10px);
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    text-align:center;
+.routePath{
+  fill:none;
+  stroke:var(--route);
+  stroke-width:5;
+  stroke-linecap:round;
+  stroke-dasharray:12 12;
+  filter:drop-shadow(0 0 7px var(--route));
+  animation:routeMove 1s linear infinite;
 }
 
-.stop:hover{
-
-    transform:
-    translateY(-3px)
-    scale(1.03);
-
-    background:#ffffff18;
+@keyframes routeMove{
+  to{
+    stroke-dashoffset:-24;
+  }
 }
 
-.dot{
+/* MARKERS */
 
-    display:inline-block;
-
-    width:10px;
-    height:10px;
-
-    border-radius:50%;
-
-    background:var(--routeColor);
-
-    box-shadow:
-    0 0 15px var(--routeColor);
-
-    margin-right:8px;
+.markers{
+  position:absolute;
+  inset:0;
 }
 
-.food-badge{
-
-    margin-left:6px;
-
-    font-size:11px;
-
-    color:#ffd36a;
+.marker{
+  position:absolute;
+  transform:translate(-50%,-50%);
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#17131d;
+  border:3px solid var(--route);
+  box-shadow:0 0 18px var(--route);
+  cursor:pointer;
+  z-index:5;
+  transition:.3s;
 }
 
+.marker:hover{
+  transform:translate(-50%,-50%) scale(1.18);
+}
 
-/* ================= PARA INFO ================= */
+.marker span{
+  font-size:20px;
+}
+
+.foodIcon{
+  position:absolute;
+  right:-7px;
+  top:-8px;
+  font-size:15px;
+  background:#ff9d00;
+  border-radius:50%;
+  width:21px;
+  height:21px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* START */
+
+.startPoint{
+  position:absolute;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  z-index:8;
+  padding:10px 18px;
+  border-radius:25px;
+  background:#ffffff12;
+  border:1px solid #ffffff25;
+  color:#ffd76a;
+  font-size:12px;
+}
+
+/* PARA CARD */
 
 .info{
-
-    display:none;
-
-    max-width:650px;
-
-    margin:
-    25px
-    auto
-    0;
-
-    padding:25px;
-
-    border-radius:25px;
-
-    background:#ffffff09;
-
-    border:
-    1px solid #ffffff18;
-
-    animation:infoIn .5s ease;
+  max-width:650px;
+  margin:25px auto 0;
+  padding:25px;
+  border-radius:25px;
+  background:#ffffff09;
+  border:1px solid #ffffff18;
+  display:none;
+  animation:up .4s ease;
 }
 
-@keyframes infoIn{
-
-    from{
-        opacity:0;
-        transform:translateY(25px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+@keyframes up{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .info h2{
-
-    color:#ffd76a;
-
-    margin-bottom:10px;
+  color:#ffd76a;
+  margin-bottom:8px;
 }
 
 .mike{
-
-    width:70px;
-    height:70px;
-
-    margin:
-    18px
-    auto;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#ffffff12;
-
-    font-size:35px;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 0 20px #ffffff20;
-
-    transition:.3s;
+  width:72px;
+  height:72px;
+  margin:18px auto;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+  background:#ffffff12;
+  border:1px solid #ffffff20;
+  cursor:pointer;
+  box-shadow:0 0 20px #ffffff20;
 }
 
-.mike:hover{
-
-    transform:scale(1.1);
-
-    box-shadow:
-    0 0 30px #ffd76a;
+.foodTitle{
+  margin-top:15px;
+  color:#ffd76a;
 }
 
-.food-list{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:8px;
-
-    margin-top:15px;
+.foods{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
 }
 
-.food-item{
-
-    padding:
-    8px
-    12px;
-
-    border-radius:20px;
-
-    background:#ff7b1830;
-
-    border:
-    1px solid #ff9d4040;
+.food{
+  padding:8px 12px;
+  border-radius:20px;
+  background:#ff7b1830;
+  border:1px solid #ff9d0040;
+  font-size:13px;
 }
 
-.no-food{
+/* MOBILE */
 
-    margin-top:15px;
+@media(max-width:600px){
 
-    color:#aaa;
-}
+  .map{
+    height:650px;
+  }
 
+  .marker{
+    width:40px;
+    height:40px;
+  }
 
-/* mobile */
-
-@media(max-width:500px){
-
-    .map{
-        min-height:670px;
-    }
-
-    .route-line{
-        height:560px;
-    }
-
-    .stop{
-        max-width:245px;
-        font-size:14px;
-    }
+  .marker span{
+    font-size:17px;
+  }
 
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
 <section id="home">
 
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div>
+  <div class="homeBox">
 
+    <div class="lamp">🪔</div>
 
-    <div class="home-content">
+    <div class="logo">PUJOR POTH</div>
 
-        <div class="lamp">
-            🪔
-        </div>
-
-        <div class="logo">
-            PUJOR POTH
-        </div>
-
-        <div class="tagline">
-            পথে পথে পুজোর গল্প
-        </div>
-
-
-        <button
-            class="enter-btn"
-            onclick="enterPujorPoth()">
-
-            🗺️ ENTER PUJOR POTH
-
-        </button>
-
+    <div class="tagline">
+      পথে পথে পুজোর গল্প
     </div>
+
+    <button class="enter" onclick="openMap()">
+      🗺️ ENTER PUJOR POTH
+    </button>
+
+  </div>
 
 </section>
 
 
-
-<!-- ================= LOADING ================= -->
-
-<section id="loading">
-
-    <div class="loading-icon">
-        🪔
-    </div>
-
-    <div class="loading-text">
-        Opening Pujor Poth...
-    </div>
-
-</section>
-
-
-
-<!-- ================= MAP ================= -->
+<!-- MAP -->
 
 <section id="mapPage">
 
-    <div class="header">
+  <div class="title">
+    <h1>🪔 PUJOR POTH</h1>
+    <p>Choose your Puja route</p>
+  </div>
 
-        <h1>
-            🪔 PUJOR POTH
-        </h1>
 
-        <p>
-            Choose your Puja route
-        </p>
+  <div class="routes">
 
+    <button class="routeBtn green"
+      onclick="showRoute('saptami')">
+      🟢 Saptamir Poth
+    </button>
+
+    <button class="routeBtn blue"
+      onclick="showRoute('astami')">
+      🔵 Astamir Poth
+    </button>
+
+    <button class="routeBtn red"
+      onclick="showRoute('navami')">
+      🔴 Nabamir Poth
+    </button>
+
+  </div>
+
+
+  <div class="map">
+
+    <div class="road road1"></div>
+    <div class="road road2"></div>
+    <div class="road road3"></div>
+
+    <svg viewBox="0 0 700 700">
+      <path id="routePath"
+        class="routePath"
+        d="">
+      </path>
+    </svg>
+
+    <div id="markers" class="markers"></div>
+
+    <div class="startPoint">
+      🪔 PUJA ROUTE
     </div>
 
-
-    <div class="routes">
-
-        <button
-            class="route-btn green"
-            onclick="showRoute('saptami')">
-
-            🟢 Saptamir Poth
-
-        </button>
+  </div>
 
 
-        <button
-            class="route-btn blue"
-            onclick="showRoute('astami')">
-
-            🔵 Astamir Poth
-
-        </button>
-
-
-        <button
-            class="route-btn red"
-            onclick="showRoute('navami')">
-
-            🔴 Nabamir Poth
-
-        </button>
-
-    </div>
-
-
-
-    <div class="map">
-
-        <div class="map-title">
-            PURULIA PUJA ROUTE
-        </div>
-
-        <div
-            class="route-line"
-            id="routeLine">
-        </div>
-
-
-        <div
-            class="stops"
-            id="stops">
-        </div>
-
-    </div>
-
-
-    <div
-        class="info"
-        id="info">
-    </div>
+  <div id="info" class="info"></div>
 
 </section>
-
 
 
 <script>
 
+/* ROUTES */
 
-/* ================= ROUTES ================= */
-
-const routes = {
-
+const routes={
 
 saptami:{
+ name:"Saptamir Poth",
+ color:"#16a34a",
 
-    name:"Saptamir Poth",
+ stops:[
+  ["Garikhana",true],
+  ["Alangidanga",true],
+  ["Devimela",false],
+  ["Dhobghata",true],
+  ["Napitpara",false],
+  ["Chasapara",false],
+  ["Sarkarpara",false],
+  ["Jeliapara",true],
+  ["Amlapara",false],
+  ["Darjipara",false],
+  ["Garikhana",true]
+ ],
 
-    color:"#16a34a",
-
-    stops:[
-
-        ["Garikhana",true],
-
-        ["Alangidanga",true],
-
-        ["Devimela",false],
-
-        ["Dhobghata",true],
-
-        ["Napitpara",false],
-
-        ["Chasapara",false],
-
-        ["Sarkarpara",false],
-
-        ["Jeliapara",true],
-
-        ["Amlapara",false],
-
-        ["Darjipara",false],
-
-        ["Garikhana",true]
-
-    ]
-
+ positions:[
+  [50,12],[72,17],[80,29],[68,40],
+  [48,48],[28,45],[20,57],[34,69],
+  [55,75],[72,66],[50,88]
+ ]
 },
-
-
 
 astami:{
+ name:"Astamir Poth",
+ color:"#2563eb",
 
-    name:"Astamir Poth",
+ stops:[
+  ["Sadarpara",false],
+  ["Union Club",false],
+  ["Huchukpara",false],
+  ["Cocks Compound",false],
+  ["Amdhia",true],
+  ["Nadhia",true],
+  ["Dulmi",true],
+  ["Ketika",true],
+  ["B. B. Das Road",false],
+  ["Madhyabazar",false],
+  ["Chowkbazar",false],
+  ["Sadarpara",false]
+ ],
 
-    color:"#2563eb",
-
-    stops:[
-
-        ["Sadarpara",false],
-
-        ["Union Club",false],
-
-        ["Huchukpara",false],
-
-        ["Cocks Compound",false],
-
-        ["Amdhia",true],
-
-        ["Nadhia",true],
-
-        ["Dulmi",true],
-
-        ["Ketika",true],
-
-        ["B. B. Das Road",false],
-
-        ["Madhyabazar",false],
-
-        ["Chowkbazar",false],
-
-        ["Sadarpara",false]
-
-    ]
-
+ positions:[
+  [50,12],[28,18],[20,30],[32,40],
+  [55,34],[72,26],[82,40],[73,53],
+  [58,63],[38,69],[25,80],[50,88]
+ ]
 },
 
-
-
 navami:{
+ name:"Nabamir Poth",
+ color:"#dc2626",
 
-    name:"Nabamir Poth",
+ stops:[
+  ["Jeliapara",true],
+  ["Chittaranjan Club",false],
+  ["Namopara",false],
+  ["Bhagabandhpara",false],
+  ["Nilkhutidanga",false],
+  ["Radhakrishna More",false],
+  ["Dakbanglow",true],
+  ["Stationpara",false],
+  ["Locoshedpara",true],
+  ["Telkalpara",true],
+  ["Dhobghata",false],
+  ["Napitpara",false],
+  ["Jeliapara",true]
+ ],
 
-    color:"#dc2626",
-
-    stops:[
-
-        ["Jeliapara",true],
-
-        ["Chittaranjan Club",false],
-
-        ["Namopara",false],
-
-        ["Bhagabandhpara",false],
-
-        ["Nilkhutidanga",false],
-
-        ["Radhakrishna More",false],
-
-        ["Dakbanglow",true],
-
-        ["Stationpara",false],
-
-        ["Locoshedpara",true],
-
-        ["Telkalpara",true],
-
-        ["Dhobghata",false],
-
-        ["Napitpara",false],
-
-        ["Jeliapara",true]
-
-    ]
+ positions:[
+  [50,10],[70,15],[82,27],[74,38],
+  [57,34],[40,28],[27,40],[22,55],
+  [35,67],[52,60],[70,68],[76,80],[50,90]
+ ]
 
 }
 
 };
 
 
+/* OPEN */
 
-/* ================= ENTER BUTTON ================= */
+function openMap(){
 
-function enterPujorPoth(){
+ document.getElementById("home").style.display="none";
 
-    const home =
-        document.getElementById("home");
+ document.getElementById("mapPage").style.display="block";
 
-    const loading =
-        document.getElementById("loading");
+ window.scrollTo(0,0);
 
-    const map =
-        document.getElementById("mapPage");
-
-
-    home.style.display="none";
-
-    loading.style.display="flex";
+ showRoute("saptami");
+}
 
 
-    setTimeout(function(){
+/* ROUTE */
 
-        loading.style.display="none";
+function showRoute(name){
 
-        map.style.display="block";
+ const route=routes[name];
 
-        window.scrollTo(0,0);
+ document.documentElement.style
+ .setProperty("--route",route.color);
 
-        showRoute("saptami");
 
-    },1800);
+ const markers=
+ document.getElementById("markers");
+
+ markers.innerHTML="";
+
+
+ /* SVG ROUTE */
+
+ let path="";
+
+ route.positions.forEach((p,i)=>{
+
+   const x=p[0]*7;
+   const y=p[1]*7;
+
+   if(i===0){
+     path+=`M ${x} ${y}`;
+   }else{
+     path+=` L ${x} ${y}`;
+   }
+
+ });
+
+
+ document.getElementById("routePath")
+ .setAttribute("d",path);
+
+
+ /* MARKERS */
+
+ route.stops.forEach((place,i)=>{
+
+   const marker=
+   document.createElement("div");
+
+   marker.className="marker";
+
+   marker.style.left=
+   route.positions[i][0]+"%";
+
+   marker.style.top=
+   route.positions[i][1]+"%";
+
+   marker.innerHTML=`
+      <span>🛕</span>
+      ${
+        place[1]
+        ? '<div class="foodIcon">🍴</div>'
+        : ''
+      }
+   `;
+
+   marker.onclick=function(){
+     showPara(place[0],place[1],route.name);
+   };
+
+   markers.appendChild(marker);
+
+ });
+
+
+ document.querySelectorAll(".routeBtn")
+ .forEach(b=>b.classList.remove("active"));
+
+
+ if(name==="saptami")
+ document.querySelector(".green").classList.add("active");
+
+ if(name==="astami")
+ document.querySelector(".blue").classList.add("active");
+
+ if(name==="navami")
+ document.querySelector(".red").classList.add("active");
+
+
+ document.getElementById("info")
+ .style.display="none";
 
 }
 
 
+/* PARA */
 
-/* ================= SHOW ROUTE ================= */
+function showPara(name,hasFood,route){
 
-function showRoute(routeName){
+ const info=document.getElementById("info");
 
-    const route =
-        routes[routeName];
+ let food="";
 
+ if(hasFood){
 
-    document.documentElement
-    .style
-    .setProperty(
-        "--routeColor",
-        route.color
-    );
+  food=`
+    <div class="foodTitle">
+      🍴 Food Available
+    </div>
 
+    <div class="foods">
+      <div class="food">🌯 Egg Roll</div>
+      <div class="food">🍜 Chowmein</div>
+      <div class="food">🌶️ Fuchka</div>
+      <div class="food">🍦 Ice Cream</div>
+      <div class="food">🥤 Cold Drink</div>
+    </div>
+  `;
 
-    const stops =
-        document.getElementById("stops");
+ }else{
 
+  food=`
+    <p style="margin-top:15px;color:#888">
+      🍴 Food information coming soon
+    </p>
+  `;
 
-    stops.innerHTML="";
-
-
-    route.stops.forEach(
-        function(place,index){
-
-            const div =
-                document.createElement("div");
-
-
-            div.className="stop";
-
-
-            div.innerHTML=`
-
-                <span class="dot"></span>
-
-                <strong>
-                    ${index+1}. ${place[0]}
-                </strong>
-
-                ${
-                    place[1]
-                    ?
-                    '<span class="food-badge">🍴 Food</span>'
-                    :
-                    ''
-                }
-
-            `;
+ }
 
 
-            div.onclick=function(){
+ info.innerHTML=`
 
-                showPara(
-                    place[0],
-                    place[1],
-                    route.name
-                );
+   <h2>🛕 ${name}</h2>
 
-            };
+   <p>📍 ${route}</p>
 
+   <div class="mike"
+     onclick="playSong('${name}')">
+     🎤
+   </div>
 
-            stops.appendChild(div);
+   <p style="text-align:center">
+     Tap the Mike to play this para's song 🎶
+   </p>
 
-        }
-    );
+   ${food}
 
+ `;
 
-    document.querySelectorAll(".route-btn")
-        .forEach(function(button){
+ info.style.display="block";
 
-            button.classList.remove("active");
-
-        });
-
-
-    if(routeName==="saptami"){
-
-        document
-        .querySelector(".green")
-        .classList.add("active");
-
-    }
-
-
-    if(routeName==="astami"){
-
-        document
-        .querySelector(".blue")
-        .classList.add("active");
-
-    }
-
-
-    if(routeName==="navami"){
-
-        document
-        .querySelector(".red")
-        .classList.add("active");
-
-    }
-
-
-    const line =
-        document.getElementById("routeLine");
-
-
-    line.style.animation="none";
-
-
-    setTimeout(function(){
-
-        line.style.animation=
-            "draw 1.5s forwards";
-
-    },50);
-
-
-    document.getElementById("info")
-        .style.display="none";
+ info.scrollIntoView({
+   behavior:"smooth",
+   block:"center"
+ });
 
 }
 
 
-
-/* ================= PARA ================= */
-
-function showPara(
-    name,
-    hasFood,
-    route
-){
-
-    const info =
-        document.getElementById("info");
-
-
-    let food="";
-
-
-    if(hasFood){
-
-        food=`
-
-            <h3>
-                🍴 Food Available
-            </h3>
-
-            <div class="food-list">
-
-                <span class="food-item">
-                    🌯 Egg Roll
-                </span>
-
-                <span class="food-item">
-                    🍜 Chowmein
-                </span>
-
-                <span class="food-item">
-                    🌶️ Fuchka
-                </span>
-
-                <span class="food-item">
-                    🍦 Ice Cream
-                </span>
-
-                <span class="food-item">
-                    🥤 Cold Drink
-                </span>
-
-            </div>
-
-        `;
-
-    }else{
-
-        food=`
-
-            <div class="no-food">
-                🍴 Food information coming soon
-            </div>
-
-        `;
-
-    }
-
-
-    info.innerHTML=`
-
-        <h2>
-            🛕 ${name}
-        </h2>
-
-        <p>
-            📍 ${route}
-        </p>
-
-
-        <div
-            class="mike"
-            onclick="playSong('${name}')">
-
-            🎤
-
-        </div>
-
-
-        <p style="text-align:center">
-            Tap the microphone to play
-            this para's song 🎶
-        </p>
-
-
-        ${food}
-
-    `;
-
-
-    info.style.display="block";
-
-
-    info.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
-}
-
-
-
-/* ================= MUSIC ================= */
+/* MUSIC */
 
 function playSong(name){
 
-    alert(
-        "🎵 "+name+
-        "\\n\\nএই পাড়ার আলাদা গান এখানে পরে যোগ করা হবে।"
-    );
+ alert(
+   "🎵 "+name+
+   "\\n\\nএই পাড়ার আলাদা গান এখানে পরে বসানো হবে।"
+ );
 
 }
 
 </script>
 
-
 </body>
-</html>
+</html> 
